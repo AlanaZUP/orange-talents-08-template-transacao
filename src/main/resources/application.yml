@@ -12,3 +12,18 @@ spring:
     properties:
       hibernate:
         driverClassName: org.postgresql.Driver
+
+
+  kafka:
+    topic: ${KAFKA_TOPIC:transacoes}
+    # Endereço do Kafka
+    bootstrap-servers: ${KAFKA_HOST:localhost:9092}
+    consumer:
+      # Formato da chave (String) recebida!
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # Formato da mensagem \ evento (JSON) recebida(o)!
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      # Identificador do grupo de consumo
+      group-id: ${KAFKA_CONSUMER_GROUP_ID:minha-aplicacao}
+      # Modelo de coleta do consumidor (latest, earliest, none)
+      auto-offset-reset: ${KAFKA_AUTO-OFFSET-RESET:latest}
