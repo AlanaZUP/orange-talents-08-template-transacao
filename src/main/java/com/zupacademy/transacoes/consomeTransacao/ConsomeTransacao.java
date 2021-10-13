@@ -39,7 +39,7 @@ public class ConsomeTransacao {
         Cartao cartao = transacaoDtoForm.getCartao().toModel();
         cartao = cartaoRepository.findByIdOrigin(cartao.getIdOrigin()).orElse(cartaoRepository.save(cartao));
 
-        Estabelecimento estabelecimento = transacaoDtoForm.getEstabelecimento().toModel();
+            Estabelecimento estabelecimento = transacaoDtoForm.getEstabelecimento().toModel();
         estabelecimento = estabelecimentoRepository.findByNomeAndCidadeAndEndereco(estabelecimento.getNome(), estabelecimento.getCidade(), estabelecimento.getEndereco()).orElse(estabelecimentoRepository.save(estabelecimento));
 
         Transacao transacao = transacaoDtoForm.toModel(estabelecimento, cartao);
