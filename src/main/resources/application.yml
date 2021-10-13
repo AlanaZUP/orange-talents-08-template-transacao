@@ -12,11 +12,17 @@ spring:
     properties:
       hibernate:
         driverClassName: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:18080/auth/realms/realm-propostas}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:18080/auth/realms/realm-propostas/protocol/openid-connect/certs}
 
 
   kafka:
     topic: ${KAFKA_TOPIC:transacoes}
-    # Endereço do Kafka
+    # Endereï¿½o do Kafka
     bootstrap-servers: ${KAFKA_HOST:localhost:9092}
     consumer:
       # Formato da chave (String) recebida!
